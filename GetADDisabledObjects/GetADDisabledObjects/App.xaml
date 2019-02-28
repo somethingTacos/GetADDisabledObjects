@@ -2,8 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:GetADDisabledObjects"
+             xmlns:vm="clr-namespace:GetADDisabledObjects.ViewModel"
+             xmlns:views="clr-namespace:GetADDisabledObjects.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <DataTemplate DataType="{x:Type vm:AllObjectsViewModel}">
+            <views:AllObjectsView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
