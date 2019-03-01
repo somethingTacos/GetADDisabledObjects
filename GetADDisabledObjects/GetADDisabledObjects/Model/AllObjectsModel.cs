@@ -21,7 +21,7 @@ namespace GetADDisabledObjects.Model
     public class ComputerObject
     {
         public string Name { get; set; } = "";
-        public string OU { get; set; } = "";
+        public string Location { get; set; } = "";
         public bool IsSelected { get; set; } = false;
     }
 
@@ -29,7 +29,7 @@ namespace GetADDisabledObjects.Model
     public class UserObject
     {
         public string Name { get; set; } = "";
-        public string OU { get; set; } = "";
+        public string Location { get; set; } = "";
         public bool IsSelected { get; set; } = false;
     }
 }
