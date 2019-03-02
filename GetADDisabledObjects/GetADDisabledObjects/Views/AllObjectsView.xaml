@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <Button Content="Get Disabled Users and Computers" Grid.Column="1" Background="Gainsboro"
                 Grid.ColumnSpan="2" Grid.Row="1" Margin="7" FontSize="15"
-                />
+                Command="{Binding GetDisabledObjectsCommand}"/>
         <TextBox Grid.Column="1" Grid.Row="2" Margin="10" VerticalContentAlignment="Center"/>
         <ComboBox Grid.Column="2" Grid.Row="2" Margin="10" VerticalContentAlignment="Center">
             <ComboBoxItem Content="Users and Computers" IsSelected="True"/>
@@ -37,7 +37,15 @@
         <TextBlock Text="Users" Grid.Column="2" Grid.Row="3" FontSize="20" VerticalAlignment="Center"
                    Margin="10 0"/>
         <ListBox Grid.Column="2" Grid.Row="4" Margin="10"/>
-        <Button Content="Removed Selected Objects" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6"
-                Margin="7" FontSize="15" Background="IndianRed"/>
+        
+        <!-- Remove Selected Objects Button -->
+        <Button Content="Removed Selected Objects" Grid.Column="1" Grid.Row="6"
+                Margin="7" FontSize="15" Background="IndianRed"
+                Command="{Binding DeleteSelectedObjectsCommand}"/>
+
+        <!-- Exit Button -->
+        <Button Content="Exit" Grid.Column="2" Grid.Row="6"
+                Margin="200 7 7 7" FontSize="15"
+                Command="{Binding ExitCommand}"/>
     </Grid>
 </UserControl>
