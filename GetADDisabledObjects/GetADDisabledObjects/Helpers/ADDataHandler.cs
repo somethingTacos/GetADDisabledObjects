@@ -26,27 +26,34 @@ namespace GetADDisabledObjects.Helpers
         {
             ObservableCollection<ComputerObject> DisabledComps = new ObservableCollection<ComputerObject>();
 
-            PrincipalContext context = new PrincipalContext(ContextType.Domain);
-            ComputerPrincipal computer = new ComputerPrincipal(context);
-
-            PrincipalSearcher searcher = new PrincipalSearcher(computer);
-
-            foreach(var obj in searcher.FindAll())
+            try
             {
-                ComputerPrincipal comp = obj as ComputerPrincipal;
+                PrincipalContext context = new PrincipalContext(ContextType.Domain);
+                ComputerPrincipal computer = new ComputerPrincipal(context);
 
-                if(comp != null)
+                PrincipalSearcher searcher = new PrincipalSearcher(computer);
+
+                foreach (var obj in searcher.FindAll())
                 {
-                    if(comp.Enabled == false)
+                    ComputerPrincipal comp = obj as ComputerPrincipal;
+
+                    if (comp != null)
                     {
-                        DisabledComps.Add(new ComputerObject
+                        if (comp.Enabled == false)
                         {
-                            Name = comp.Name,
-                            Location = comp.DistinguishedName,
-                            IsSelected = false
-                        });
+                            DisabledComps.Add(new ComputerObject
+                            {
+                                Name = comp.Name,
+                                Location = comp.DistinguishedName,
+                                IsSelected = false
+                            });
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Error: {ex.Message}\n\nIs host a domain Controller?", "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
             }
 
             return DisabledComps;
@@ -54,9 +61,36 @@ namespace GetADDisabledObjects.Helpers
 
         private static ObservableCollection<UserObject> GetDisabledUsers()
         {
+            ObservableCollection<UserObject> DisabledUsers = new ObservableCollection<UserObject>();
 
+            try
+            {
+                PrincipalContext context = new PrincipalContext(ContextType.Domain);
+                UserPrincipal user = new UserPrincipal(context);
 
-            return new ObservableCollection<UserObject>();
+                PrincipalSearcher searcher = new PrincipalSearcher(user);
+
+                foreach (var obj in searcher.FindAll())
+                {
+                    UserPrincipal usr = obj as UserPrincipal;
+
+                    if (usr != null)
+                    {
+                        if (usr.Enabled == false)
+                        {
+                            DisabledUsers.Add(new UserObject
+                            {
+                                Name = usr.Name,
+                                Location = usr.DistinguishedName,
+                                IsSelected = false
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return DisabledUsers;
         }
         #endregion
     }

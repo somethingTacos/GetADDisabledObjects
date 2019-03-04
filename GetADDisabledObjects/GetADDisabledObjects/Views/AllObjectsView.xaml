@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GetADDisabledObjects.Views"
+             xmlns:model="clr-namespace:GetADDisabledObjects.Model"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="850">
     <Grid>
@@ -16,7 +17,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
@@ -25,26 +25,66 @@
         <Button Content="Get Disabled Users and Computers" Grid.Column="1" Background="Gainsboro"
                 Grid.ColumnSpan="2" Grid.Row="1" Margin="7" FontSize="15"
                 Command="{Binding GetDisabledObjectsCommand}"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Margin="10" VerticalContentAlignment="Center"/>
-        <ComboBox Grid.Column="2" Grid.Row="2" Margin="10" VerticalContentAlignment="Center">
-            <ComboBoxItem Content="Users and Computers" IsSelected="True"/>
-            <ComboBoxItem Content="Computers Only"/>
-            <ComboBoxItem Content="Users Only"/>
-        </ComboBox>
-        <TextBlock Text="Computers" Grid.Column="1" Grid.Row="3" FontSize="20" VerticalAlignment="Center"
+        <TextBlock Text="Disabled Computers" Grid.Column="1" Grid.Row="2" FontSize="20" VerticalAlignment="Center"
                    Margin="10 0"/>
-        <ListBox Grid.Column="1" Grid.Row="4" Margin="10"/>
-        <TextBlock Text="Users" Grid.Column="2" Grid.Row="3" FontSize="20" VerticalAlignment="Center"
+        <ScrollViewer Grid.Column="1" Grid.Row="3">
+            <ItemsControl ItemsSource="{Binding AllDisabledObjects.DisabledComputers}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Top"
+                                   />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type model:ComputerObject}">
+                        <CheckBox Content="{Binding Name}"
+                                  IsChecked="{Binding IsSelected}"
+                                  FontSize="12"
+                                  Margin="0 0 0 3">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <TextBlock Text="Disabled Users" Grid.Column="2" Grid.Row="2" FontSize="20" VerticalAlignment="Center"
                    Margin="10 0"/>
-        <ListBox Grid.Column="2" Grid.Row="4" Margin="10"/>
+        <ScrollViewer Grid.Column="2" Grid.Row="3">
+            <ItemsControl ItemsSource="{Binding AllDisabledObjects.DisabledUsers}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"
+                                   HorizontalAlignment="Left" 
+                                   VerticalAlignment="Top"
+                                   />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type model:UserObject}">
+                        <CheckBox Content="{Binding Name}"
+                                  IsChecked="{Binding IsSelected}"
+                                  FontSize="12"
+                                  Margin="0 0 0 3">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="2" ScaleY="2"/>
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         
         <!-- Remove Selected Objects Button -->
-        <Button Content="Removed Selected Objects" Grid.Column="1" Grid.Row="6"
+        <Button Content="Removed Selected Objects" Grid.Column="1" Grid.Row="5"
                 Margin="7" FontSize="15" Background="IndianRed"
                 Command="{Binding DeleteSelectedObjectsCommand}"/>
 
         <!-- Exit Button -->
-        <Button Content="Exit" Grid.Column="2" Grid.Row="6"
+        <Button Content="Exit" Grid.Column="2" Grid.Row="5"
                 Margin="200 7 7 7" FontSize="15"
                 Command="{Binding ExitCommand}"/>
     </Grid>

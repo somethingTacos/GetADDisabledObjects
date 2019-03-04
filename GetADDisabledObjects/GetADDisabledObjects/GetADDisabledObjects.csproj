@@ -66,10 +66,15 @@
     <Compile Include="Helpers\ADDataHandler.cs" />
     <Compile Include="Helpers\MyICommand.cs" />
     <Compile Include="Model\AllObjectsModel.cs" />
+    <Compile Include="Model\SelectedObjectRemovalModel.cs" />
     <Compile Include="ViewModel\AllObjectsViewModel.cs" />
     <Compile Include="ViewModel\NavigationViewModel.cs" />
+    <Compile Include="ViewModel\SelectedObjectRemovalViewModel.cs" />
     <Compile Include="Views\AllObjectsView.xaml.cs">
       <DependentUpon>AllObjectsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectedObjectRemovalView.xaml.cs">
+      <DependentUpon>SelectedObjectRemovalView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AllObjectsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectedObjectRemovalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

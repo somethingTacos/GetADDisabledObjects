@@ -9,5 +9,9 @@
         <DataTemplate DataType="{x:Type vm:AllObjectsViewModel}">
             <views:AllObjectsView/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:SelectedObjectRemovalViewModel}">
+            <views:SelectedObjectRemovalView/>
+        </DataTemplate>
     </Application.Resources>
 </Application>

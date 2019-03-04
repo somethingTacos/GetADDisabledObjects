@@ -31,7 +31,15 @@ namespace GetADDisabledObjects.ViewModel
         #region Commands Code
         public void onGetDisabledObjectsCommand(object parameter)
         {
-            AllDisabledObjects = ADDataHandler.GetDisabledObjects();
+            AllObjects tempAO = new AllObjects();
+
+            tempAO = ADDataHandler.GetDisabledObjects();
+
+            AllDisabledObjects.DisabledComputers.Clear();
+            AllDisabledObjects.DisabledUsers.Clear();
+
+            AllDisabledObjects.DisabledComputers = tempAO.DisabledComputers;
+            AllDisabledObjects.DisabledUsers = tempAO.DisabledUsers;
         }
         public bool canGetDisabledObjectsCommand()
         {
@@ -41,7 +49,7 @@ namespace GetADDisabledObjects.ViewModel
 
         public void onDeleteSelectedObjectsCommand(object parameter)
         {
-            System.Windows.MessageBox.Show("Not setup yet  :(");
+            _navigationViewModel.SelectedViewModel = new SelectedObjectRemovalViewModel(_navigationViewModel, AllDisabledObjects);
         }
         public bool canDeleteSelectedObjectsCommand()
         {
