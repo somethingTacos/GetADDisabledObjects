@@ -1,5 +1,6 @@
 ﻿using GetADDisabledObjects.Helpers;
 using GetADDisabledObjects.Model;
+using System.Threading.Tasks;
 
 namespace GetADDisabledObjects.ViewModel
 {
@@ -9,14 +10,14 @@ namespace GetADDisabledObjects.ViewModel
         private NavigationViewModel _navigationViewModel { get; set; }
 
         public MyICommand ExitCommand { get; set; }
-        public MyICommand GetDisabledObjectsCommand { get; set; }
         public MyICommand DeleteSelectedObjectsCommand { get; set; }
+        public AwaitableDelegateCommand GetDisabledObjectsCommand { get; set; }
 
         public AllObjectsViewModel(NavigationViewModel navigationViewModel)
         {
             _navigationViewModel = navigationViewModel;
             ExitCommand = new MyICommand(onExitCommand, canExitCommand);
-            GetDisabledObjectsCommand = new MyICommand(onGetDisabledObjectsCommand, canGetDisabledObjectsCommand);
+            GetDisabledObjectsCommand = new AwaitableDelegateCommand(onGetDisabledObjectsCommand, canGetDisabledObjectsCommand);
             DeleteSelectedObjectsCommand = new MyICommand(onDeleteSelectedObjectsCommand, canDeleteSelectedObjectsCommand);
             initAllDisabledObjects();
         }
@@ -29,7 +30,7 @@ namespace GetADDisabledObjects.ViewModel
         }
 
         #region Commands Code
-        public void onGetDisabledObjectsCommand(object parameter)
+        public async Task onGetDisabledObjectsCommand()
         {
             AllObjects tempAO = new AllObjects();
 

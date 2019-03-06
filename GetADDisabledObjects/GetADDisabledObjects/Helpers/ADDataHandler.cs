@@ -10,6 +10,20 @@ namespace GetADDisabledObjects.Helpers
 {
     public static class ADDataHandler
     {
+        //EXAMPLE TASK CODE, because lazy...
+
+        //private RTMonitor ReturnableRTData;
+        //public async Task<RTMonitor> CheckRTConnections(RTMonitor TargetsToCheck)
+        //{
+        //    await Task.Run(() =>
+        //    {
+        //        ReturnableRTData = _CheckRTConnections(TargetsToCheck);
+
+        //    });
+        //    return ReturnableRTData;
+        //}
+
+
         public static AllObjects GetDisabledObjects()
         {
             AllObjects AllDisabledComputersData = new AllObjects();
@@ -53,7 +67,7 @@ namespace GetADDisabledObjects.Helpers
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show($"Error: {ex.Message}\n\nIs host a domain Controller?", "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                System.Windows.MessageBox.Show($"Error: {ex.Message}\n\nIs host in a domain?", "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
             }
 
             return DisabledComps;
