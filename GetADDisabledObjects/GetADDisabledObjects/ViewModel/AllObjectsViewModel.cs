@@ -1,5 +1,7 @@
 ﻿using GetADDisabledObjects.Helpers;
 using GetADDisabledObjects.Model;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GetADDisabledObjects.ViewModel
@@ -34,7 +36,7 @@ namespace GetADDisabledObjects.ViewModel
         {
             AllObjects tempAO = new AllObjects();
 
-            tempAO = ADDataHandler.GetDisabledObjects();
+            tempAO = await ADDataHandler.GetDisabledObjects();
 
             AllDisabledObjects.DisabledComputers.Clear();
             AllDisabledObjects.DisabledUsers.Clear();
@@ -50,7 +52,13 @@ namespace GetADDisabledObjects.ViewModel
 
         public void onDeleteSelectedObjectsCommand(object parameter)
         {
-            _navigationViewModel.SelectedViewModel = new SelectedObjectRemovalViewModel(_navigationViewModel, AllDisabledObjects);
+            AllObjects ObjectsToRemove = new AllObjects();
+            var selectedComps = AllDisabledObjects.DisabledComputers.Where(x => x.IsSelected).ToArray<ComputerObject>();
+            var selectedUsers = AllDisabledObjects.DisabledUsers.Where(x => x.IsSelected).ToArray<UserObject>();
+            ObjectsToRemove.DisabledComputers = new ObservableCollection<ComputerObject>(selectedComps);
+            ObjectsToRemove.DisabledUsers = new ObservableCollection<UserObject>(selectedUsers);
+
+            _navigationViewModel.SelectedViewModel = new SelectedObjectRemovalViewModel(_navigationViewModel, ObjectsToRemove);
         }
         public bool canDeleteSelectedObjectsCommand()
         {

@@ -135,7 +135,13 @@
     <Folder Include="CustomControls\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Squares.gif" />
+    <Resource Include="Images\comp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.2.1\build\Fody.targets" Condition="Exists('..\packages\Fody.4.2.1\build\Fody.targets')" />

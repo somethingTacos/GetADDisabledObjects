@@ -13,5 +13,22 @@
         <DataTemplate DataType="{x:Type vm:SelectedObjectRemovalViewModel}">
             <views:SelectedObjectRemovalView/>
         </DataTemplate>
+
+        <Style x:Key="SelectedObjectButtonsStyle" TargetType="{x:Type Button}">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Grid.Row" Value="2"/>
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+        </Style>
+
+        <Style x:Key="SubGridStyle" TargetType="{x:Type Grid}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

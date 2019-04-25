@@ -22,11 +22,15 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Button Content="Get Disabled Users and Computers" Grid.Column="1" Background="Gainsboro"
+        <Button Content="{Binding AllDisabledObjects.MainButtonText}" Grid.Column="1" Background="Gainsboro"
                 Grid.ColumnSpan="2" Grid.Row="1" Margin="7" FontSize="15"
                 Command="{Binding GetDisabledObjectsCommand}"/>
-        <TextBlock Text="Disabled Computers" Grid.Column="1" Grid.Row="2" FontSize="20" VerticalAlignment="Center"
+        
+        <Grid Style="{StaticResource SubGridStyle}" Grid.Column="1" Grid.Row="2">
+            <CheckBox Content="Disabled Computers"  FontSize="20" VerticalAlignment="Center"
                    Margin="10 0"/>
+        </Grid>
+        
         <ScrollViewer Grid.Column="1" Grid.Row="3">
             <ItemsControl ItemsSource="{Binding AllDisabledObjects.DisabledComputers}">
                 <ItemsControl.ItemsPanel>
@@ -51,8 +55,12 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <TextBlock Text="Disabled Users" Grid.Column="2" Grid.Row="2" FontSize="20" VerticalAlignment="Center"
+        
+        <Grid Style="{StaticResource SubGridStyle}" Grid.Column="2" Grid.Row="2">
+            <CheckBox Content="Disabled Users" FontSize="20" VerticalAlignment="Center"
                    Margin="10 0"/>
+        </Grid>
+        
         <ScrollViewer Grid.Column="2" Grid.Row="3">
             <ItemsControl ItemsSource="{Binding AllDisabledObjects.DisabledUsers}">
                 <ItemsControl.ItemsPanel>
@@ -80,7 +88,7 @@
         
         <!-- Remove Selected Objects Button -->
         <Button Content="Removed Selected Objects" Grid.Column="1" Grid.Row="5"
-                Margin="7" FontSize="15" Background="IndianRed"
+                Margin="7" FontSize="15" Background="IndianRed" IsTabStop="False"
                 Command="{Binding DeleteSelectedObjectsCommand}"/>
 
         <!-- Exit Button -->
