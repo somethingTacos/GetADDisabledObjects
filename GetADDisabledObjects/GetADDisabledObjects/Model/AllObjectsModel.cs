@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using PropertyChanged;
 
 namespace GetADDisabledObjects.Model
@@ -18,7 +13,6 @@ namespace GetADDisabledObjects.Model
         public bool SelectAllUsers { get; set; } = false;
         public ObservableCollection<ComputerObject> DisabledComputers { get; set; } = new ObservableCollection<ComputerObject>();
         public ObservableCollection<UserObject> DisabledUsers { get; set; } = new ObservableCollection<UserObject>();
-        public ObservableCollection<FailedRemovalObject> CouldNotRemoveObjects = new ObservableCollection<FailedRemovalObject>();
     }
 
     [AddINotifyPropertyChangedInterface]

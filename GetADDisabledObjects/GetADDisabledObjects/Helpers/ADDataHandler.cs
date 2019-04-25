@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
 using System.Collections.ObjectModel;
 using GetADDisabledObjects.Model;
-using System.Windows;
 
 namespace GetADDisabledObjects.Helpers
 {

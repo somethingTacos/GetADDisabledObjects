@@ -2,7 +2,6 @@
 using GetADDisabledObjects.Helpers;
 using System.Windows;
 using System.Collections.ObjectModel;
-using System.DirectoryServices;
 using System.Threading.Tasks;
 using System;
 
