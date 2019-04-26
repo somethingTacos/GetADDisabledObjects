@@ -190,7 +190,7 @@ namespace GetADDisabledObjects.Helpers
         private static ObservableCollection<UserObject> GetDisabledUsers()
         {
             ObservableCollection<UserObject> DisabledUsers = new ObservableCollection<UserObject>();
-            string[] BuiltInAccounts = { "Guest", "krbtgt" };
+            string[] BuiltInAccounts = { "Guest", "krbtgt", "DefaultAccount" }; // I should make it so you can add to an 'Ignore' list... I'll consider it...
 
             try
             {
