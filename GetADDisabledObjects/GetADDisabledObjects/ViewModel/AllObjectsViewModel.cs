@@ -3,6 +3,7 @@ using GetADDisabledObjects.Model;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GetADDisabledObjects.ViewModel
 {
@@ -34,6 +35,8 @@ namespace GetADDisabledObjects.ViewModel
         #region Commands Code
         public async Task onGetDisabledObjectsCommand()
         {
+            AllDisabledObjects.MainButtonText = "Fetching Disabled Objects...";
+            AllDisabledObjects.FetchingObjectsGifVisibility = Visibility.Visible;
             AllObjects tempAO = new AllObjects();
 
             tempAO = await ADDataHandler.GetDisabledObjects();
@@ -43,6 +46,9 @@ namespace GetADDisabledObjects.ViewModel
 
             AllDisabledObjects.DisabledComputers = tempAO.DisabledComputers;
             AllDisabledObjects.DisabledUsers = tempAO.DisabledUsers;
+
+            AllDisabledObjects.FetchingObjectsGifVisibility = Visibility.Hidden;
+            AllDisabledObjects.MainButtonText = "Get Disabled Users and Computers";
         }
         public bool canGetDisabledObjectsCommand()
         {

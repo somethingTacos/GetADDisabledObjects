@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GetADDisabledObjects"
         mc:Ignorable="d"
-        Title="Get AD Disabled Objects" Height="600" Width="950">
+        Title="Get AD Disabled Objects" 
+        MinHeight="550" MinWidth="750"
+        Height="600" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
