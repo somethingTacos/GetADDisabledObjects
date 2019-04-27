@@ -59,8 +59,10 @@ namespace GetADDisabledObjects.ViewModel
 
         public async Task onConfirmRemovalCommand()
         {
+            selectedObjects.RemovingObjectsGifVibility = Visibility.Visible;
             Tuple<bool, AllObjects> RemovalSucceeded = await ADDataHandler.RemoveSelectedObjects(selectedObjects.allObjects);
-            
+            selectedObjects.RemovingObjectsGifVibility = Visibility.Hidden;
+
             selectedObjects.RemovalButtonVisibility = Visibility.Hidden;
             selectedObjects.OperationCompleteButtonText = "Done";
             RemovalDataList.Clear();

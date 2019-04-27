@@ -22,12 +22,12 @@ namespace GetADDisabledObjects.Helpers
 
         private static AllObjects _GetDisabledObjects()
         {
-            AllObjects AllDisabledComputersData = new AllObjects();
+            AllObjects AllDisabledObjectsData = new AllObjects();
 
-            AllDisabledComputersData.DisabledComputers = GetDisabledComputers();
-            AllDisabledComputersData.DisabledUsers = GetDisabledUsers();
+            AllDisabledObjectsData.DisabledComputers = GetDisabledComputers();
+            AllDisabledObjectsData.DisabledUsers = GetDisabledUsers();
 
-            return AllDisabledComputersData;
+            return AllDisabledObjectsData;
         }
 
         private static Tuple<bool, AllObjects> AllObjectsRemoved;

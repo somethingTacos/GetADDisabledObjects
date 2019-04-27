@@ -58,7 +58,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="{x:Type model:ComputerObject}">
 
-                        <GroupBox Background="LightBlue" HorizontalAlignment="Stretch"
+                        <GroupBox Background="LightGray" HorizontalAlignment="Stretch"
                                   HorizontalContentAlignment="Stretch">
                             <CheckBox IsChecked="{Binding IsSelected}"
                                   Margin="0 3 0 3">
@@ -98,14 +98,24 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="{x:Type model:UserObject}">
-                        <CheckBox Content="{Binding Name}"
-                                  IsChecked="{Binding IsSelected}"
-                                  FontSize="12"
-                                  Margin="0 0 0 3">
-                            <CheckBox.LayoutTransform>
-                                <ScaleTransform ScaleX="2" ScaleY="2"/>
-                            </CheckBox.LayoutTransform>
-                        </CheckBox>
+                        <GroupBox Background="LightGray" HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Stretch">
+                            <CheckBox IsChecked="{Binding IsSelected}"
+                                  Margin="0 3 0 3">
+                                <CheckBox.Content>
+                                    <DockPanel>
+                                        <TextBlock Text="{Binding Name}"
+                                               FontSize="10" FontWeight="SemiBold"
+                                               Foreground="MediumPurple" DockPanel.Dock="Top"/>
+                                        <TextBlock Text="{Binding Location}" TextWrapping="Wrap"
+                                               FontSize="8" DockPanel.Dock="Bottom"/>
+                                    </DockPanel>
+                                </CheckBox.Content>
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="2" ScaleY="2"/>
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+                        </GroupBox>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

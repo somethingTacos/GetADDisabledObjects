@@ -13,5 +13,6 @@ namespace GetADDisabledObjects.Model
 
         public string OperationCompleteButtonText { get; set; } = "Cancel";
         public Visibility RemovalButtonVisibility { get; set; } = Visibility.Visible;
+        public Visibility RemovingObjectsGifVibility { get; set; } = Visibility.Hidden;
     }
 }
