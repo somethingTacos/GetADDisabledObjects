@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GetADDisabledObjects",
+    "\\GetADDisabledObjects\\GetADDisabledObjects"
   ],
+  "SelectedNode": "\\GetADDisabledObjects\\GetADDisabledObjects",
   "PreviewInSolutionExplorer": false
 }
